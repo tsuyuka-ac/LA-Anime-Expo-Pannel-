@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AX 2026 展示リスト × 論点・トレンド分析</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,sans-serif;font-size:12px;background:#f8f8f6;color:#1a1a1a;padding:12px}
+h1{font-size:17px;font-weight:600;margin-bottom:3px}
+.sub{font-size:11px;color:#666;margin-bottom:10px}
+.legend{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px;padding:8px;background:#fff;border-radius:8px;border:1px solid #e8e5e0}
+.legend-title{font-size:10px;font-weight:600;width:100%;color:#333;margin-bottom:3px}
+.lg{font-size:9px;padding:2px 7px;border-radius:8px;font-weight:500}
+.ctrl-block{margin-bottom:5px}
+.ctrl-label{font-size:10px;color:#888;margin-bottom:2px}
+.controls{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:4px}
+.btn{padding:3px 9px;font-size:10px;border:1px solid #ccc;border-radius:12px;background:#fff;cursor:pointer}
+.btn.active{background:#1a1a1a;color:#fff;border-color:#1a1a1a}
+.btn-p.active{background:#E65100;border-color:#E65100;color:#fff}
+.btn-t.active{background:#0277BD;border-color:#0277BD;color:#fff}
+input{padding:5px 10px;font-size:12px;border:1px solid #ccc;border-radius:6px;width:100%;margin-bottom:6px}
+.count{font-size:11px;color:#666;margin-bottom:6px}
+.tbl-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:11px;table-layout:fixed}
+th{font-size:10px;font-weight:600;text-align:left;padding:5px 5px;background:#f0ede8;border-bottom:2px solid #ddd;position:sticky;top:0;z-index:2}
+td{padding:5px 5px;vertical-align:top;border-bottom:1px solid #ece9e3;line-height:1.45;word-break:break-word}
+tr:hover td{background:#faf9f7}
+.hall{display:inline-block;font-size:9px;padding:1px 5px;border-radius:7px;font-weight:600;white-space:nowrap}
+.sh{background:#EEEDFE;color:#3C3489}
+.wh{background:#E1F5EE;color:#085041}
+.kh{background:#FAECE7;color:#712B13}
+.cat{display:inline-block;font-size:9px;padding:1px 4px;border-radius:5px;white-space:nowrap;margin-top:2px}
+.c-merch{background:#E6F1FB;color:#0C447C}
+.c-game{background:#EEEDFE;color:#534AB7}
+.c-figure{background:#EAF3DE;color:#27500A}
+.c-manga{background:#FCE4EC;color:#880E4F}
+.c-fashion{background:#FAECE7;color:#712B13}
+.c-art{background:#FFF9C4;color:#827717}
+.c-tech{background:#E0F2F1;color:#004D40}
+.c-cosplay{background:#FBEAF0;color:#72243E}
+.c-food{background:#F1EFE8;color:#444}
+.c-travel{background:#E8EAF6;color:#283593}
+.pt{display:inline-block;font-size:9px;padding:1px 4px;border-radius:4px;margin:1px 1px 0 0;font-weight:500;white-space:nowrap}
+.co-layer{display:inline-block;font-size:9px;padding:1px 4px;border-radius:4px;background:#E8EAF6;color:#3949AB;margin:2px 0}
+.name-text{font-weight:600;font-size:11px;line-height:1.3;margin-bottom:2px}
+th:nth-child(1){width:12%}
+th:nth-child(2){width:7%}
+th:nth-child(3){width:6%}
+th:nth-child(4){width:6%}
+th:nth-child(5){width:17%}
+th:nth-child(6){width:22%}
+th:nth-child(7){width:20%}
+th:nth-child(8){width:10%}
+</style>
+</head>
+<body>
+<h1>🏢 AX 2026 展示リスト × 論点・トレンド分析表</h1>
+<p class="sub">公式Exhibitorリストより取得 | 全297社 | 日程：7/2(木)〜7/5(日) | South Hall / West Hall / Kentia Hall</p>
+
+<div class="legend">
+<div class="legend-title">■ 論点</div>
+<span class="lg" style="background:#FFE0B2;color:#E65100">P1: 価値創造と獲得の分離</span>
+<span class="lg" style="background:#E1F5FE;color:#0277BD">P2: レイヤー間接続力</span>
+<span class="lg" style="background:#F3E5F5;color:#6A1B9A">P3: 価値獲得の仕組み</span>
+<span class="lg" style="background:#E8F5E9;color:#1B5E20">P4: 自社保有vs提携</span>
+<div class="legend-title" style="margin-top:4px">■ トレンド仮説</div>
+<span class="lg" style="background:#FFF9C4;color:#827717">T1: IP権利集約・多角化</span>
+<span class="lg" style="background:#FCE4EC;color:#880E4F">T2: 商品化・推し活・体験型</span>
+<span class="lg" style="background:#E8EAF6;color:#283593">T3: アニメ×ゲーム×インタラクティブ</span>
+<span class="lg" style="background:#E0F2F1;color:#004D40">T4: 配信PFのIP運営レイヤー化</span>
+<span class="lg" style="background:#FBE9E7;color:#BF360C">T5: 現地運営・直接ファン接点強化</span>
+</div>
+
+<div class="ctrl-block"><div class="ctrl-label">■ ホール</div>
+<div class="controls" id="hallF">
+<button class="btn active" data-v="all">全ホール</button>
+<button class="btn" data-v="South Hall">South Hall (60社)</button>
+<button class="btn" data-v="West Hall">West Hall (117社)</button>
+<button class="btn" data-v="Kentia Hall">Kentia Hall (120社)</button>
+</div></div>
+
+<div class="ctrl-block"><div class="ctrl-label">■ カテゴリ</div>
+<div class="controls" id="catF">
+<button class="btn active" data-v="all">全て</button>
+<button class="btn" data-v="merch">グッズ</button>
+<button class="btn" data-v="game">ゲーム</button>
+<button class="btn" data-v="fashion">ファッション</button>
+<button class="btn" data-v="art">アート</button>
+<button class="btn" data-v="manga">マンガ</button>
+<button class="btn" data-v="figure">フィギュア</button>
+<button class="btn" data-v="tech">テクノロジー</button>
+<button class="btn" data-v="cosplay">コスプレ</button>
+<button class="btn" data-v="food">食品</button>
+<button class="btn" data-v="travel">旅行</button>
+</div></div>
+
+<div class="ctrl-block"><div class="ctrl-label">■ 論点フィルター</div>
+<div class="controls" id="ptF">
+<button class="btn active" data-v="all">全て</button>
+<button class="btn btn-p" data-v="P1">P1: 価値分離</button>
+<button class="btn btn-p" data-v="P2">P2: レイヤー接続</button>
+<button class="btn btn-p" data-v="P3">P3: 価値獲得仕組み</button>
+<button class="btn btn-p" data-v="P4">P4: 自社保有vs提携</button>
+</div></div>
+
+<div class="ctrl-block"><div class="ctrl-label">■ トレンドフィルター</div>
+<div class="controls" id="trdF">
+<button class="btn active" data-v="all">全て</button>
+<button class="btn btn-t" data-v="T1">T1: IP権利</button>
+<button class="btn btn-t" data-v="T2">T2: 商品化・体験</button>
+<button class="btn btn-t" data-v="T3">T3: ゲーム×インタラ</button>
+<button class="btn btn-t" data-v="T4">T4: 配信PFレイヤー化</button>
+<button class="btn btn-t" data-v="T5">T5: 現地・直接接点</button>
+</div></div>
+
+<input type="text" id="q" placeholder="キーワード検索（展示名・ブース番号・企業詳細・内容など）">
+<div class="count" id="cnt"></div>
+
+<div class="tbl-wrap">
+<table>
+<thead><tr>
+<th>展示名・企業名</th><th>ブース</th><th>ホール</th><th>カテゴリ</th>
+<th>企業情報</th><th>展示内容（日本語）</th><th>見るべきポイント</th><th>論点/TRD</th>
+</tr></thead>
+<tbody id="tb"></tbody>
+</table>
+</div>
+
+<script>
+var PC={P1:"#FFE0B2",P2:"#E1F5FE",P3:"#F3E5F5",P4:"#E8F5E9"};
+var PT={P1:"#E65100",P2:"#0277BD",P3:"#6A1B9A",P4:"#1B5E20"};
+var TC={T1:"#FFF9C4",T2:"#FCE4EC",T3:"#E8EAF6",T4:"#E0F2F1",T5:"#FBE9E7"};
+var TT={T1:"#827717",T2:"#880E4F",T3:"#283593",T4:"#004D40",T5:"#BF360C"};
+var PL={P1:"P1",P2:"P2",P3:"P3",P4:"P4"};
+var TL={T1:"T1",T2:"T2",T3:"T3",T4:"T4",T5:"T5"};
+var CC={merch:"c-merch",game:"c-game",figure:"c-figure",manga:"c-manga",fashion:"c-fashion",art:"c-art",tech:"c-tech",cosplay:"c-cosplay",food:"c-food",travel:"c-travel"};
+var CL={merch:"グッズ",game:"ゲーム",figure:"フィギュア",manga:"マンガ",fashion:"ファッション",art:"アート",tech:"テクノロジー",cosplay:"コスプレ",food:"食品",travel:"旅行"};
+var HC={"South Hall":"sh","West Hall":"wh","Kentia Hall":"kh"};
+var HL={"South Hall":"South","West Hall":"West","Kentia Hall":"Kentia"};
+
+var R=[{name:"168 Dragon Trading",booth:"KH-1906",hall:"Kentia Hall",cat:"travel",desc_jp:"日本旅行・観光情報のPRブース。アニメ聖地巡礼・交通・宿泊の案内。Railpass等の情報も。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ聖地巡礼・日本旅行の具体的な計画に役立つ情報が集まる。Railpass案内や割引情報も確認を。"},
+{name:"Absolute Territory Inc.",booth:"KH-1936, KH-1938",hall:"Kentia Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"ACG Go Anime",booth:"WH-3056",hall:"West Hall",cat:"figure",desc_jp:"くじゲーム・ガシャポン体験と日本直輸入グッズを販売。Honkai Star Rail, Genshin Impact, Tears of Themis, MoDaoZuShi (Grandmaster of De...",co_detail:"",co_layer:"",pts:"",trds:"T2,T3",point:"くじ・ガシャポン体験はAX会場ならではの体験。希少なアイテムが当たる可能性あり。"},
+{name:"ACRO TOKYO",booth:"WH-1266, WH-1366",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Aitai☆Kuji",booth:"WH-370",hall:"West Hall",cat:"game",desc_jp:"くじゲーム・ガシャポン体験と日本直輸入グッズを販売。Aitai☆Kuji connects global fans with authentic anime and gaming merchandise, str...",co_detail:"東京拠点の日本アニメ・ゲームグッズ専門輸入業者。くじ（ガチャ）ゲームとオーセンティックグッズのUS展開に特化。",co_layer:"EC・小売",pts:"P2,P3",trds:"T2,T3,T5",point:"ミートアンドグリートイベント開催予定。限定グッズ獲得チャンスも。早めの列形成を推奨。"},
+{name:"AKIBA HQ",booth:"SH-2930",hall:"South Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"秋葉原・池袋拠点の日本アニメグッズショップ。ガンプラ・フィギュア・人気IP直輸入品を取り扱う。",co_layer:"小売・輸入",pts:"P2,P3",trds:"T2,T3,T5",point:"プレイアブルデモ体験ができる。発売前作品を最速で体験できるチャンス。"},
+{name:"AKIBA-HOBBY / PARTHENON.P",booth:"WH-376",hall:"West Hall",cat:"art",desc_jp:"アニメ・マンガのオリジナルアート・プリント・イラストを展示販売。アーティストとの交流機会も。",co_detail:"秋葉原・池袋拠点の日本アニメグッズショップ。ガンプラ・フィギュア・人気IP直輸入品を取り扱う。",co_layer:"小売・輸入",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"All Blue Anime Inc.",booth:"SH-714",hall:"South Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"AmiAmi",booth:"SH-314",hall:"South Hall",cat:"figure",desc_jp:"最新フィギュアのディスプレイサンプル展示と独占グッズ・限定品の販売。",co_detail:"日本最大のオンラインアニメフィギュア・グッズショップ。世界中のファンに利用されるECプラットフォーム。",co_layer:"EC・小売",pts:"P3",trds:"T2,T3",point:"AX限定グッズあり。他では入手不可の限定品を早めにチェック。数量限定のため午前中の訪問を推奨。"},
+{name:"ANA",booth:"SH-929",hall:"South Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"全日本空輸（ANA）。日本への航空券・旅行体験のPRブース。アニメファンの日本旅行需要を直接取り込む。",co_layer:"旅行・航空",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Aniji/ToysLogic",booth:"SH-3538",hall:"South Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"animate GROUP",booth:"SH-2100",hall:"South Hall",cat:"game",desc_jp:"ゲームの最新作プレイアブルデモ・情報発表・限定グッズ販売。インタラクティブな体験コーナーあり。",co_detail:"日本最大のアニメ専門小売チェーン。全国300店舗以上を展開。公式グッズ・CD・DVD・マンガを幅広く取り扱う。",co_layer:"小売",pts:"P2,P3",trds:"T1,T2,T3",point:"AX限定グッズあり。他では入手不可の限定品を早めにチェック。数量限定のため午前中の訪問を推奨。"},
+{name:"Anime Depot",booth:"WH-3050",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Anime Gear Guru",booth:"WH-3500",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Anime Jungle",booth:"SH-725",hall:"South Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Anime King",booth:"KH-1912",hall:"Kentia Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Anime Link",booth:"KH-3112, KH-3212",hall:"Kentia Hall",cat:"art",desc_jp:"アニメセル画・鉛筆スケッチ・オリジナルプロダクションアートの高品質コレクション。",co_detail:"",co_layer:"",pts:"P4",trds:"T1",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Anime Palace",booth:"KH-724,KH-726,KH-824,KH-826",hall:"Kentia Hall",cat:"figure",desc_jp:"アニメ・マンガ・ゲームキャラクターの高品質フィギュア・コレクタブルを展示販売。限定品・先行販売あり。",co_detail:"",co_layer:"",pts:"P3",trds:"T2",point:"AX限定グッズあり。他では入手不可の限定品を早めにチェック。数量限定のため午前中の訪問を推奨。"},
+{name:"Anime World",booth:"KH-1624",hall:"Kentia Hall",cat:"figure",desc_jp:"公式ウォールスクロール・ぬいぐるみ・限定Tシャツ・コレクタブルハットを販売。",co_detail:"",co_layer:"",pts:"P3",trds:"T2",point:"記念イベント・特別展示あり。節目の年ならではの限定グッズ・サプライズ発表に注目。"},
+{name:"Animebooks.com",booth:"KH-1918",hall:"Kentia Hall",cat:"manga",desc_jp:"マンガ・ライトノベル・グラフィックノベルの販売。最新ライセンス作品・限定版・サイン本の入手機会。",co_detail:"",co_layer:"",pts:"",trds:"",point:"英語版マンガ・LNの最新ライセンス情報をいち早くキャッチ。サイン会・限定版の入手機会も。"},
+{name:"ANIMECOAST.com",booth:"KH-2612",hall:"Kentia Hall",cat:"game",desc_jp:"入手困難なヴィンテージアニメセル画・アートブック・フィギュア・コレクタブルの専門ショップ。",co_detail:"",co_layer:"",pts:"P2",trds:"T1,T2,T3",point:"ゲームの最新情報・デモを一番早く体験できる。新作発表のサプライズに期待。"},
+{name:"Animon Life",booth:"WH-1128",hall:"West Hall",cat:"game",desc_jp:"ゲームの最新作プレイアブルデモ・情報発表・限定グッズ販売。インタラクティブな体験コーナーあり。",co_detail:"原神・崩壊スターレイル・ゼンレスゾーンゼロを展開する中国発ゲーム企業。世界トップクラスのモバイルゲームIP運営。",co_layer:"ゲーム・IP運営",pts:"P1,P2",trds:"T1,T2,T3",point:"ゲームの最新情報・デモを一番早く体験できる。新作発表のサプライズに期待。"},
+{name:"Aniplex of America",booth:"SH-3314, SH-3320",hall:"South Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"ソニーミュージックグループ傘下。Fate/FGO・鬼滅・SAOなど主要IPを保有・運営する日本最大のアニメプロデューサー。",co_layer:"IP権利者・制作",pts:"",trds:"T1",point:"IP権利者が直接運営するブース。二次利用権・ライセンス交渉の起点となる可能性。業界関係者にも注目の場。"},
+{name:"Anique Inc.",booth:"WH-2328",hall:"West Hall",cat:"art",desc_jp:"プレミアムアニメグッズ・コレクタブルを世界中のIPホルダーと提携して展開。フォトオプ・展示体験も。",co_detail:"",co_layer:"",pts:"P2,P4",trds:"T1,T2,T5",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"ANIROLLZ",booth:"KH-118, KH-120, KH-218, KH-220",hall:"Kentia Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Aoshima x Gaia Notes",booth:"WH-3504",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Apari",booth:"KH-1336, KH-1436",hall:"Kentia Hall",cat:"fashion",desc_jp:"アニメ・日本カルチャーインスパイアのアパレル・アクセサリーを展示販売。限定デザインアイテムあり。",co_detail:"",co_layer:"",pts:"P4",trds:"T1",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Arc System Works",booth:"SH-2926",hall:"South Hall",cat:"game",desc_jp:"ゲームの最新作プレイアブルデモ・情報発表・限定グッズ販売。インタラクティブな体験コーナーあり。",co_detail:"ギルティギア・ブレイブルーシリーズで知られる格闘ゲーム専門デベロッパー。アニメスタイルの高品質グラフィックで世界的評価。",co_layer:"ゲーム",pts:"P2,P4",trds:"T3",point:"ゲームの最新情報・デモを一番早く体験できる。新作発表のサプライズに期待。"},
+{name:"Art of Rachta Lin",booth:"KH-1424, KH-1426",hall:"Kentia Hall",cat:"game",desc_jp:"ゲームの最新作プレイアブルデモ・情報発表・限定グッズ販売。インタラクティブな体験コーナーあり。",co_detail:"",co_layer:"",pts:"P2",trds:"T3",point:"ゲームの最新情報・デモを一番早く体験できる。新作発表のサプライズに期待。"},
+{name:"Artistsan Studio",booth:"KH-1038, KH-1138",hall:"Kentia Hall",cat:"art",desc_jp:"アニメ・マンガのオリジナルアート・プリント・イラストを展示販売。アーティストとの交流機会も。",co_detail:"",co_layer:"",pts:"P4",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"AsianBobaGirl",booth:"KH-214",hall:"Kentia Hall",cat:"fashion",desc_jp:"アニメ・日本カルチャーインスパイアのアパレル・アクセサリーを展示販売。限定デザインアイテムあり。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"ATLUS/SEGA",booth:"SH-1300",hall:"South Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"世界的なゲーム・アミューズメント企業セガ。子会社Sega Faveを通じてアニメ・ゲームキャラクターグッズを幅広く展開。",co_layer:"ゲーム・IP商品化",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"AVIOT",booth:"WH-3000",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"axes femme",booth:"WH-676",hall:"West Hall",cat:"art",desc_jp:"アニメセル画・鉛筆スケッチ・オリジナルプロダクションアートの高品質コレクション。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Azuki",booth:"WH-424",hall:"West Hall",cat:"game",desc_jp:"ゲームの最新作プレイアブルデモ・情報発表・限定グッズ販売。インタラクティブな体験コーナーあり。",co_detail:"",co_layer:"",pts:"P4",trds:"T1,T3",point:"ゲームの最新情報・デモを一番早く体験できる。新作発表のサプライズに期待。"},
+{name:"Bandage Brigade",booth:"WH-170,WH-172",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Bandai Namco Filmworks",booth:"SH-2406",hall:"South Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"バンダイナムコグループ。フィギュア・玩具・ゲーム・アニメ制作を統合するエンタメ企業。ガンプラ・TAMASHII NATIONSなど。",co_layer:"IP商品化・ゲーム・制作",pts:"P1",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Bandai Namco",booth:"WH-1636",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"バンダイナムコグループ。フィギュア・玩具・ゲーム・アニメ制作を統合するエンタメ企業。ガンプラ・TAMASHII NATIONSなど。",co_layer:"IP商品化・ゲーム・制作",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Bandai Namco",booth:"WH-2300",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"バンダイナムコグループ。フィギュア・玩具・ゲーム・アニメ制作を統合するエンタメ企業。ガンプラ・TAMASHII NATIONSなど。",co_layer:"IP商品化・ゲーム・制作",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Basura Gang",booth:"KH-814, KH-714",hall:"Kentia Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"BEYBLADE X",booth:"WH-1600",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Bibisama",booth:"SH-708, WH-1370",hall:"South Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Bimyou Workshop",booth:"KH-1314, KH-1414",hall:"Kentia Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"BISHIEPRO STUDIO",booth:"KH-738",hall:"Kentia Hall",cat:"game",desc_jp:"ゲームの最新作プレイアブルデモ・情報発表・限定グッズ販売。インタラクティブな体験コーナーあり。",co_detail:"",co_layer:"",pts:"P4",trds:"T1,T3",point:"ゲームの最新情報・デモを一番早く体験できる。新作発表のサプライズに期待。"},
+{name:"Bishounen Boutique",booth:"WH-3542,WH-3544,WH-3642,WH-3644",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"全日本空輸（ANA）。日本への航空券・旅行体験のPRブース。アニメファンの日本旅行需要を直接取り込む。",co_layer:"旅行・航空",pts:"P2",trds:"T2",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Blulious",booth:"WH-3536",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"BOOKOFF",booth:"KH-1300",hall:"Kentia Hall",cat:"game",desc_jp:"ゲームの最新作プレイアブルデモ・情報発表・限定グッズ販売。インタラクティブな体験コーナーあり。",co_detail:"",co_layer:"",pts:"P2",trds:"T3,T5",point:"ゲームの最新情報・デモを一番早く体験できる。新作発表のサプライズに期待。"},
+{name:"Boomslank",booth:"KH-1330, KH-1332,KH-1430, KH-1432",hall:"Kentia Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Bosuman",booth:"KH-414, KH-514",hall:"Kentia Hall",cat:"fashion",desc_jp:"アニメ・日本カルチャーインスパイアのアパレル・アクセサリーを展示販売。限定デザインアイテムあり。",co_detail:"",co_layer:"",pts:"P4",trds:"T1",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Brother Ming Games",booth:"KH-520",hall:"Kentia Hall",cat:"game",desc_jp:"ゲームの最新作プレイアブルデモ・情報発表・限定グッズ販売。インタラクティブな体験コーナーあり。",co_detail:"",co_layer:"",pts:"P2",trds:"T3",point:"ゲームの最新情報・デモを一番早く体験できる。新作発表のサプライズに期待。"},
+{name:"BrownDust2",booth:"WH-3524",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Bryce Kho Draws",booth:"KH-406",hall:"Kentia Hall",cat:"art",desc_jp:"アニメ・マンガのオリジナルアート・プリント・イラストを展示販売。アーティストとの交流機会も。",co_detail:"",co_layer:"",pts:"",trds:"T5",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Build Your Collectibles",booth:"WH-212",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Bushiroad",booth:"SH-1306",hall:"South Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"カードゲーム（ヴァンガード・ヴァイスシュバルツ）・BanG Dream!等のIPデベロッパー。メディアミックスを積極展開。",co_layer:"IP商品化・ゲーム",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Calico Critters",booth:"KH-106",hall:"Kentia Hall",cat:"art",desc_jp:"アニメセル画・鉛筆スケッチ・オリジナルプロダクションアートの高品質コレクション。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Cardtoon Inc.",booth:"KH-1036, KH-1136",hall:"Kentia Hall",cat:"figure",desc_jp:"アニメ・マンガ・ゲームキャラクターの高品質フィギュア・コレクタブルを展示販売。限定品・先行販売あり。",co_detail:"",co_layer:"",pts:"",trds:"T1,T2,T5",point:"高品質フィギュアを実物で確認・購入できる。AX限定カラー・先行販売品の存在も例年あり。"},
+{name:"Cartoon Passion",booth:"KH-1030",hall:"Kentia Hall",cat:"art",desc_jp:"アニメ・マンガのオリジナルアート・プリント・イラストを展示販売。アーティストとの交流機会も。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"CD PROJEKT RED",booth:"SH-1008",hall:"South Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Cheeky",booth:"WH-3042",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Chirofish",booth:"WH-3004",hall:"West Hall",cat:"fashion",desc_jp:"アニメ・日本カルチャーインスパイアのアパレル・アクセサリーを展示販売。限定デザインアイテムあり。",co_detail:"",co_layer:"",pts:"P4",trds:"T1",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Citrus Dollette",booth:"WH-1270",hall:"West Hall",cat:"fashion",desc_jp:"アニメ・日本カルチャーインスパイアのアパレル・アクセサリーを展示販売。限定デザインアイテムあり。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Civil Regime",booth:"WH-450",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"CODE27",booth:"WH-250",hall:"West Hall",cat:"tech",desc_jp:"アニメ×テクノロジーの革新的製品・サービスを展示。インタラクティブデモ体験あり。",co_detail:"ホログラム的ディスプレイ・3Dアニメーション・公式ライセンスIPとボイスバンクを搭載したインタラクティブキャラクターハードウェアを開発。",co_layer:"テクノロジー",pts:"P1,P4",trds:"T1,T3",point:"無料グッズ・サンプル配布あり。先着順のため早めの訪問を推奨。"},
+{name:"Commerce Gluttony",booth:"WH-228",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Co-Splay",booth:"WH-2304",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"T3",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Collectors Universe and Anime Inc.",booth:"KH-2906",hall:"Kentia Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"concon",booth:"KH-124, KH-224",hall:"Kentia Hall",cat:"game",desc_jp:"ゲームの最新作プレイアブルデモ・情報発表・限定グッズ販売。インタラクティブな体験コーナーあり。",co_detail:"",co_layer:"",pts:"P2,P4",trds:"T1,T3",point:"ゲームの最新情報・デモを一番早く体験できる。新作発表のサプライズに期待。"},
+{name:"COPIC",booth:"KH-1642",hall:"Kentia Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Cosplay Deviants",booth:"KH-3324, KH-3326",hall:"Kentia Hall",cat:"fashion",desc_jp:"アニメセル画・鉛筆スケッチ・オリジナルプロダクションアートの高品質コレクション。",co_detail:"",co_layer:"",pts:"P2,P3",trds:"T1,T2,T3",point:"プレイアブルデモ体験ができる。発売前作品を最速で体験できるチャンス。"},
+{name:"cosplaymoomoo",booth:"KH-730,KH-830",hall:"Kentia Hall",cat:"cosplay",desc_jp:"コスプレ衣装・ウィッグ・小道具を販売。公式ライセンス品からオリジナルまで幅広くラインナップ。",co_detail:"",co_layer:"",pts:"",trds:"T3",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"CptnAlex Designs",booth:"WH-3562",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Crossing Cards",booth:"WH-3752",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Crunchyroll",booth:"SH-2526, SH-2935",hall:"South Hall",cat:"game",desc_jp:"プレミアムアニメグッズ・コレクタブルを世界中のIPホルダーと提携して展開。フォトオプ・展示体験も。",co_detail:"世界最大のアニメ専門ストリーミング。ソニーグループ傘下。1億人超のユーザー・200以上の国で展開。配信から商品・ゲームまで統合プラットフォーム。",co_layer:"配信プラットフォーム",pts:"P2",trds:"T2,T3,T4",point:"配信PFが直接ファンと接点を持つブース。新作情報・限定コンテンツの先行公開が期待される。"},
+{name:"Cyanide Candy",booth:"KH-2946",hall:"Kentia Hall",cat:"food",desc_jp:"日本のプレミアム食品・飲料をUS市場向けに展開。試食・サンプル配布あり。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"CyberAgent Group",booth:"SH-320",hall:"South Hall",cat:"tech",desc_jp:"アニメ×テクノロジーの革新的製品・サービスを展示。インタラクティブデモ体験あり。",co_detail:"AbemaTVでアニメ無料配信を展開する日本のIT企業。アニメ制作子会社も保有。デジタル広告×コンテンツの複合モデル。",co_layer:"配信プラットフォーム",pts:"P2",trds:"T2",point:"配信PFが直接ファンと接点を持つブース。新作情報・限定コンテンツの先行公開が期待される。"},
+{name:"CyberPowerPC",booth:"SH-1114",hall:"South Hall",cat:"game",desc_jp:"ゲームの最新作プレイアブルデモ・情報発表・限定グッズ販売。インタラクティブな体験コーナーあり。",co_detail:"",co_layer:"",pts:"",trds:"T3",point:"プレイアブルデモ体験ができる。発売前作品を最速で体験できるチャンス。"},
+{name:"CYBIRD",booth:"SH-114",hall:"South Hall",cat:"game",desc_jp:"ゲームの最新作プレイアブルデモ・情報発表・限定グッズ販売。インタラクティブな体験コーナーあり。",co_detail:"",co_layer:"",pts:"P2",trds:"T3",point:"ゲームの最新情報・デモを一番早く体験できる。新作発表のサプライズに期待。"},
+{name:"Cygames",booth:"SH-2706, SH-3327",hall:"South Hall",cat:"game",desc_jp:"ゲームの最新作プレイアブルデモ・情報発表・限定グッズ販売。インタラクティブな体験コーナーあり。",co_detail:"",co_layer:"",pts:"P2",trds:"T3",point:"ゲームの最新情報・デモを一番早く体験できる。新作発表のサプライズに期待。"},
+{name:"DAN DA DAN",booth:"WH-912",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"DEAR VANILLA",booth:"KH-2818, KH-2820",hall:"Kentia Hall",cat:"manga",desc_jp:"マンガ・ライトノベル・グラフィックノベルの販売。最新ライセンス作品・限定版・サイン本の入手機会。",co_detail:"",co_layer:"",pts:"",trds:"T2,T5",point:"英語版マンガ・LNの最新ライセンス情報をいち早くキャッチ。サイン会・限定版の入手機会も。"},
+{name:"DENPA Books",booth:"KH-3114",hall:"Kentia Hall",cat:"manga",desc_jp:"マンガ・ライトノベル・グラフィックノベルの販売。最新ライセンス作品・限定版・サイン本の入手機会。",co_detail:"",co_layer:"",pts:"",trds:"T1",point:"英語版マンガ・LNの最新ライセンス情報をいち早くキャッチ。サイン会・限定版の入手機会も。"},
+{name:"Denpasoft",booth:"KH-2424, KH-2524",hall:"Kentia Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Dim Mak",booth:"WH-3552, WH-3652",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Dispel Dice",booth:"WH-976, WH-1076",hall:"West Hall",cat:"game",desc_jp:"ゲームの最新作プレイアブルデモ・情報発表・限定グッズ販売。インタラクティブな体験コーナーあり。",co_detail:"全日本空輸（ANA）。日本への航空券・旅行体験のPRブース。アニメファンの日本旅行需要を直接取り込む。",co_layer:"旅行・航空",pts:"",trds:"T3",point:"ゲームの最新情報・デモを一番早く体験できる。新作発表のサプライズに期待。"},
+{name:"Doujin Online",booth:"KH-1930",hall:"Kentia Hall",cat:"art",desc_jp:"アニメ・マンガのオリジナルアート・プリント・イラストを展示販売。アーティストとの交流機会も。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Dreamscape",booth:"WH-3636,WH-3736",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Dyeneko",booth:"KH-2624",hall:"Kentia Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Elementa",booth:"WH-236",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"emaqi",booth:"SH-3508",hall:"South Hall",cat:"manga",desc_jp:"マンガ・ライトノベル・グラフィックノベルの販売。最新ライセンス作品・限定版・サイン本の入手機会。",co_detail:"",co_layer:"",pts:"P2,P3",trds:"T1,T2,T4",point:"英語版マンガ・LNの最新ライセンス情報をいち早くキャッチ。サイン会・限定版の入手機会も。"},
+{name:"Ensky Co., Ltd.",booth:"WH-2336",hall:"West Hall",cat:"cosplay",desc_jp:"コスプレ衣装・ウィッグ・小道具を販売。公式ライセンス品からオリジナルまで幅広くラインナップ。",co_detail:"",co_layer:"",pts:"P4",trds:"T1,T5",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Epic Cosplay Wigs",booth:"KH-2312",hall:"Kentia Hall",cat:"cosplay",desc_jp:"コスプレ衣装・ウィッグ・小道具を販売。公式ライセンス品からオリジナルまで幅広くラインナップ。",co_detail:"",co_layer:"",pts:"",trds:"T3",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Equilibrium USG",booth:"KH-3118,KH-3120",hall:"Kentia Hall",cat:"fashion",desc_jp:"アニメ・日本カルチャーインスパイアのアパレル・アクセサリーを展示販売。限定デザインアイテムあり。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"EUPHORIC JAPAN CO LTD",booth:"KH-1636",hall:"Kentia Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"F.SH",booth:"KH-112,KH-212",hall:"Kentia Hall",cat:"fashion",desc_jp:"アニメ・日本カルチャーインスパイアのアパレル・アクセサリーを展示販売。限定デザインアイテムあり。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Fabric of the Universe",booth:"WH-1976",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"FAKKU",booth:"KH-2928",hall:"Kentia Hall",cat:"game",desc_jp:"ゲームの最新作プレイアブルデモ・情報発表・限定グッズ販売。インタラクティブな体験コーナーあり。",co_detail:"US最大手の成人向けマンガ・アニメコンテンツプラットフォーム。正規ライセンスで日本の18+コンテンツを北米展開。",co_layer:"現地ライセンス（成人向け）",pts:"P2,P3",trds:"T1,T3,T5",point:"ゲームの最新情報・デモを一番早く体験できる。新作発表のサプライズに期待。"},
+{name:"Favorite Spot by NIHONCHOKUHAN & MLFUSA",booth:"WH-3538",hall:"West Hall",cat:"manga",desc_jp:"マンガ・ライトノベル・グラフィックノベルの販売。最新ライセンス作品・限定版・サイン本の入手機会。",co_detail:"",co_layer:"",pts:"P2,P3",trds:"T2,T3,T5",point:"プレイアブルデモ体験ができる。発売前作品を最速で体験できるチャンス。"},
+{name:"Felinaps",booth:"WH-3650",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"P1",trds:"T1",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"FestivAX JPN",booth:"SH-2214",hall:"South Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Fine Collectibles Displays & Protection",booth:"KH-732",hall:"Kentia Hall",cat:"art",desc_jp:"アニメ・マンガのオリジナルアート・プリント・イラストを展示販売。アーティストとの交流機会も。",co_detail:"",co_layer:"",pts:"",trds:"T3",point:"プレイアブルデモ体験ができる。発売前作品を最速で体験できるチャンス。"},
+{name:"FlyQuest",booth:"WH-928, WH-930",hall:"West Hall",cat:"game",desc_jp:"ゲームの最新作プレイアブルデモ・情報発表・限定グッズ販売。インタラクティブな体験コーナーあり。",co_detail:"",co_layer:"",pts:"",trds:"T3",point:"ゲームの最新情報・デモを一番早く体験できる。新作発表のサプライズに期待。"},
+{name:"Fragmented Nostalgia",booth:"WH-924, WH-926",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"FreshTango",booth:"WH-2312",hall:"West Hall",cat:"game",desc_jp:"ゲームの最新作プレイアブルデモ・情報発表・限定グッズ販売。インタラクティブな体験コーナーあり。",co_detail:"",co_layer:"",pts:"P2",trds:"T3",point:"ゲームの最新情報・デモを一番早く体験できる。新作発表のサプライズに期待。"},
+{name:"FURYU",booth:"SH-3306",hall:"South Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Gacha by T-ARTS",booth:"WH-900",hall:"West Hall",cat:"art",desc_jp:"アニメ・マンガのオリジナルアート・プリント・イラストを展示販売。アーティストとの交流機会も。",co_detail:"",co_layer:"",pts:"P3,P4",trds:"T1,T2",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Gallery Panda",booth:"SH-1927",hall:"South Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Game Grumps",booth:"WH-1376",hall:"West Hall",cat:"game",desc_jp:"ゲームの最新作プレイアブルデモ・情報発表・限定グッズ販売。インタラクティブな体験コーナーあり。",co_detail:"",co_layer:"",pts:"P2",trds:"T3",point:"ゲームの最新情報・デモを一番早く体験できる。新作発表のサプライズに期待。"},
+{name:"Gamersupps",booth:"SH-308",hall:"South Hall",cat:"game",desc_jp:"ゲームの最新作プレイアブルデモ・情報発表・限定グッズ販売。インタラクティブな体験コーナーあり。",co_detail:"ゲーマー向けエナジードリンク・栄養補助食品のリーディングブランド。アニメ・ゲームコラボフレーバーで人気。",co_layer:"食品・飲料",pts:"P2",trds:"T3",point:"ゲームの最新情報・デモを一番早く体験できる。新作発表のサプライズに期待。"},
+{name:"Game Replica",booth:"KH-2318",hall:"Kentia Hall",cat:"game",desc_jp:"ゲームの最新作プレイアブルデモ・情報発表・限定グッズ販売。インタラクティブな体験コーナーあり。",co_detail:"",co_layer:"",pts:"P2",trds:"T3",point:"ゲームの最新情報・デモを一番早く体験できる。新作発表のサプライズに期待。"},
+{name:"Game Tower, LLC",booth:"WH-972",hall:"West Hall",cat:"game",desc_jp:"ゲームの最新作プレイアブルデモ・情報発表・限定グッズ販売。インタラクティブな体験コーナーあり。",co_detail:"",co_layer:"",pts:"P2",trds:"T3",point:"ゲームの最新情報・デモを一番早く体験できる。新作発表のサプライズに期待。"},
+{name:"Garagarakuji.tokyo",booth:"KH-1018",hall:"Kentia Hall",cat:"figure",desc_jp:"くじゲーム・ガシャポン体験と日本直輸入グッズを販売。Spin to win! Try your luck at our Garagarakuji machine — every spin wins you a f...",co_detail:"",co_layer:"",pts:"",trds:"T2",point:"くじ・ガシャポン体験はAX会場ならではの体験。希少なアイテムが当たる可能性あり。"},
+{name:"Geeklectic",booth:"WH-670, WH-770",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Genex Gaming",booth:"WH-2562",hall:"West Hall",cat:"game",desc_jp:"ゲームの最新作プレイアブルデモ・情報発表・限定グッズ販売。インタラクティブな体験コーナーあり。",co_detail:"",co_layer:"",pts:"",trds:"T3",point:"ゲームの最新情報・デモを一番早く体験できる。新作発表のサプライズに期待。"},
+{name:"Genii Streetwear",booth:"WH-3162",hall:"West Hall",cat:"fashion",desc_jp:"アニメ・日本カルチャーインスパイアのアパレル・アクセサリーを展示販売。限定デザインアイテムあり。",co_detail:"",co_layer:"",pts:"",trds:"T5",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Girthy Gochu",booth:"KH-2646",hall:"Kentia Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Global Anime",booth:"SH-3520",hall:"South Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Godzilla Sake",booth:"WH-224",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Good Smile Company",booth:"SH-3000",hall:"South Hall",cat:"figure",desc_jp:"アニメセル画・鉛筆スケッチ・オリジナルプロダクションアートの高品質コレクション。",co_detail:"2001年創業（2026年で25周年）。ねんどろいど・POP UP PARADEで世界市場を席捲するフィギュアメーカー最大手。",co_layer:"IP商品化",pts:"P3",trds:"T1,T2,T5",point:"記念イベント・特別展示あり。節目の年ならではの限定グッズ・サプライズ発表に注目。"},
+{name:"Goozee Pins",booth:"KH-400",hall:"Kentia Hall",cat:"game",desc_jp:"ゲームの最新作プレイアブルデモ・情報発表・限定グッズ販売。インタラクティブな体験コーナーあり。",co_detail:"",co_layer:"",pts:"",trds:"T3",point:"ゲームの最新情報・デモを一番早く体験できる。新作発表のサプライズに期待。"},
+{name:"Grand Archive TCG",booth:"SH-1800",hall:"South Hall",cat:"game",desc_jp:"ゲームの最新作プレイアブルデモ・情報発表・限定グッズ販売。インタラクティブな体験コーナーあり。",co_detail:"",co_layer:"",pts:"",trds:"T3",point:"ゲームの最新情報・デモを一番早く体験できる。新作発表のサプライズに期待。"},
+{name:"Great Eastern Entertainment Co Inc",booth:"SH-2106",hall:"South Hall",cat:"game",desc_jp:"ゲームの最新作プレイアブルデモ・情報発表・限定グッズ販売。インタラクティブな体験コーナーあり。",co_detail:"",co_layer:"",pts:"P2",trds:"T2,T3",point:"ゲームの最新情報・デモを一番早く体験できる。新作発表のサプライズに期待。"},
+{name:"GungHo",booth:"WH-2316",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"GRYPHLINE",booth:"WH-936, SH-3724",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Gyozados",booth:"KH-100",hall:"Kentia Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Harmmy Anime x EAKI",booth:"WH-1616, WH-1618",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Headempty",booth:"KH-424",hall:"Kentia Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Hello Freedom",booth:"WH-950, WH-952",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"HELMECHA",booth:"WH-364",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Hen Da Ne! Inc.",booth:"KH-3336",hall:"Kentia Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Heritage Auctions",booth:"WH-1970",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"hirari.co",booth:"KH-2220",hall:"Kentia Hall",cat:"fashion",desc_jp:"アニメ・日本カルチャーインスパイアのアパレル・アクセサリーを展示販売。限定デザインアイテムあり。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Hobby Shop Ichiban",booth:"KH-1342",hall:"Kentia Hall",cat:"figure",desc_jp:"アニメ・マンガ・ゲームキャラクターの高品質フィギュア・コレクタブルを展示販売。限定品・先行販売あり。",co_detail:"",co_layer:"",pts:"",trds:"",point:"高品質フィギュアを実物で確認・購入できる。AX限定カラー・先行販売品の存在も例年あり。"},
+{name:"HoYoverse",booth:"SH-1225",hall:"South Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"原神・崩壊スターレイル・ゼンレスゾーンゼロを展開する中国発ゲーム企業。世界トップクラスのモバイルゲームIP運営。",co_layer:"ゲーム・IP運営",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"HoshibakoWorks",booth:"WH-970, WH-1070",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Hulu Inc",booth:"SH-2130",hall:"South Hall",cat:"tech",desc_jp:"アニメ×テクノロジーの革新的製品・サービスを展示。インタラクティブデモ体験あり。",co_detail:"",co_layer:"",pts:"P2",trds:"T4",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Hypland",booth:"KH-1600",hall:"Kentia Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"iBLOOM",booth:"WH-3550",hall:"West Hall",cat:"food",desc_jp:"日本のプレミアム食品・飲料をUS市場向けに展開。試食・サンプル配布あり。",co_detail:"",co_layer:"",pts:"P4",trds:"T1",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"iBUYPOWER & HYTE",booth:"WH-2342",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"iiii CLOTHING",booth:"KH-2146",hall:"Kentia Hall",cat:"fashion",desc_jp:"アニメ・日本カルチャーインスパイアのアパレル・アクセサリーを展示販売。限定デザインアイテムあり。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"IGA Co., Ltd.",booth:"WH-676",hall:"West Hall",cat:"art",desc_jp:"アニメセル画・鉛筆スケッチ・オリジナルプロダクションアートの高品質コレクション。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"In My Parents Basement",booth:"KH-706",hall:"Kentia Hall",cat:"fashion",desc_jp:"アニメ・日本カルチャーインスパイアのアパレル・アクセサリーを展示販売。限定デザインアイテムあり。",co_detail:"",co_layer:"",pts:"P1",trds:"T1,T5",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Ironmouse & Friends",booth:"SH-700",hall:"South Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Japan Funtime LLC",booth:"KH-712, KH-812",hall:"Kentia Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"P3",trds:"T2,T5",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"JAPANDA",booth:"KH-2138",hall:"Kentia Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Japanime Games",booth:"WH-1964",hall:"West Hall",cat:"game",desc_jp:"ゲームの最新作プレイアブルデモ・情報発表・限定グッズ販売。インタラクティブな体験コーナーあり。",co_detail:"",co_layer:"",pts:"P2",trds:"T3",point:"ゲームの最新情報・デモを一番早く体験できる。新作発表のサプライズに期待。"},
+{name:"Japanwave",booth:"KH-742",hall:"Kentia Hall",cat:"fashion",desc_jp:"アニメ・日本カルチャーインスパイアのアパレル・アクセサリーを展示販売。限定デザインアイテムあり。",co_detail:"",co_layer:"",pts:"",trds:"T2",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"JAST & J18",booth:"KH-2938",hall:"Kentia Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Jellypinch",booth:"KH-426",hall:"Kentia Hall",cat:"fashion",desc_jp:"アニメ・日本カルチャーインスパイアのアパレル・アクセサリーを展示販売。限定デザインアイテムあり。",co_detail:"",co_layer:"",pts:"P4",trds:"T1",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"JETRO Los Angeles",booth:"SH-2500",hall:"South Hall",cat:"game",desc_jp:"ゲームの最新作プレイアブルデモ・情報発表・限定グッズ販売。インタラクティブな体験コーナーあり。",co_detail:"日本貿易振興機構（JETRO）が主催するGeek Streetゾーン。アニメ・ゲーム・VTuber・かわいいカルチャー・音楽を集約した複合体験エリア。",co_layer:"政府機関・貿易振興",pts:"P2",trds:"T2,T3",point:"ゲームの最新情報・デモを一番早く体験できる。新作発表のサプライズに期待。"},
+{name:"Jpophouse",booth:"KH-2212, KH-2214",hall:"Kentia Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"JR EAST & JR CENTRAL",booth:"WH-958, WH-956",hall:"West Hall",cat:"travel",desc_jp:"日本旅行・観光情報のPRブース。アニメ聖地巡礼・交通・宿泊の案内。Railpass等の情報も。",co_detail:"JR東日本・JR東海の鉄道PR。新幹線・Railpassの案内。アニメ聖地巡礼・日本旅行に関心のあるファン向け。",co_layer:"旅行・交通",pts:"",trds:"",point:"アニメ聖地巡礼・日本旅行の具体的な計画に役立つ情報が集まる。Railpass案内や割引情報も確認を。"},
+{name:"KADOKAWA WORLD ENTERTAINMENT, INC.",booth:"SH-2720",hall:"South Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"日本最大級の総合エンタメ企業。Re:ZERO・このすば・文ストなどのIPを原作からアニメ・EC・出版まで垂直統合で運営。",co_layer:"IP権利者・出版・制作",pts:"",trds:"",point:"記念イベント・特別展示あり。節目の年ならではの限定グッズ・サプライズ発表に注目。"},
+{name:"KAIJU NO. 8 THE GAME",booth:"WH-1150, WH-1350",hall:"West Hall",cat:"game",desc_jp:"ゲームの最新作プレイアブルデモ・情報発表・限定グッズ販売。インタラクティブな体験コーナーあり。",co_detail:"",co_layer:"",pts:"P2,P3",trds:"T1,T2,T3",point:"ゲームの最新情報・デモを一番早く体験できる。新作発表のサプライズに期待。"},
+{name:"Kanro America Inc.",booth:"WH-1064",hall:"West Hall",cat:"food",desc_jp:"日本のプレミアム食品・飲料をUS市場向けに展開。試食・サンプル配布あり。",co_detail:"日本の老舗製菓メーカー「カンロ」の米国法人。ピュレグミ等のプレミアムキャンディ・グミを米国展開。",co_layer:"食品",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"KEHASUK",booth:"KH-1318",hall:"Kentia Hall",cat:"tech",desc_jp:"アニメ×テクノロジーの革新的製品・サービスを展示。インタラクティブデモ体験あり。",co_detail:"",co_layer:"",pts:"",trds:"T3",point:"プレイアブルデモ体験ができる。発売前作品を最速で体験できるチャンス。"},
+{name:"Kess Entertainment",booth:"WH-1156, WH-1358",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Kinfold",booth:"WH-1676",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Kinokuniya Bookstore",booth:"SH-1706",hall:"South Hall",cat:"manga",desc_jp:"マンガ・ライトノベル・グラフィックノベルの販売。最新ライセンス作品・限定版・サイン本の入手機会。",co_detail:"",co_layer:"",pts:"",trds:"T5",point:"英語版マンガ・LNの最新ライセンス情報をいち早くキャッチ。サイン会・限定版の入手機会も。"},
+{name:"KINWAMONSTER",booth:"KH-1630",hall:"Kentia Hall",cat:"fashion",desc_jp:"アニメ・日本カルチャーインスパイアのアパレル・アクセサリーを展示販売。限定デザインアイテムあり。",co_detail:"",co_layer:"",pts:"P4",trds:"T1",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Kiru Made x Pikarar",booth:"WH-3556,WH-3656,WH-3756",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Kotobukiya Co., Ltd.",booth:"SH-1120",hall:"South Hall",cat:"game",desc_jp:"ゲームの最新作プレイアブルデモ・情報発表・限定グッズ販売。インタラクティブな体験コーナーあり。",co_detail:"1953年創業の老舗フィギュアメーカー。高品質スケールフィギュアとプラモデルキットで世界的に評価される。",co_layer:"IP商品化",pts:"P2",trds:"T1,T2,T3",point:"ゲームの最新情報・デモを一番早く体験できる。新作発表のサプライズに期待。"},
+{name:"Kouhigh Toys",booth:"KH-1120, KH-1118",hall:"Kentia Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Kurozoku",booth:"KH-3330, KH-3332",hall:"Kentia Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Kyoto Maruhisa USA",booth:"WH-1378",hall:"West Hall",cat:"fashion",desc_jp:"アニメ・日本カルチャーインスパイアのアパレル・アクセサリーを展示販売。限定デザインアイテムあり。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Leen Customs",booth:"WH-164, WH-166",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"LEGACY CARDS",booth:"KH-1618",hall:"Kentia Hall",cat:"figure",desc_jp:"アニメ・マンガ・ゲームキャラクターの高品質フィギュア・コレクタブルを展示販売。限定品・先行販売あり。",co_detail:"",co_layer:"",pts:"",trds:"",point:"高品質フィギュアを実物で確認・購入できる。AX限定カラー・先行販売品の存在も例年あり。"},
+{name:"liliuhms shop",booth:"KH-2812, KH-2814, KH-2912, KH-2914",hall:"Kentia Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"P4",trds:"T1,T2",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Little Cutie",booth:"WH-1928",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Losers x Lovers",booth:"KH-836, KH-736",hall:"Kentia Hall",cat:"game",desc_jp:"ゲームの最新作プレイアブルデモ・情報発表・限定グッズ販売。インタラクティブな体験コーナーあり。",co_detail:"",co_layer:"",pts:"",trds:"T3",point:"ゲームの最新情報・デモを一番早く体験できる。新作発表のサプライズに期待。"},
+{name:"Lotus Eater Apparel",booth:"KH-1112",hall:"Kentia Hall",cat:"fashion",desc_jp:"アニメ・日本カルチャーインスパイアのアパレル・アクセサリーを展示販売。限定デザインアイテムあり。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Love and Deepspace",booth:"SH-1920",hall:"South Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"LunaCatz",booth:"KH-138",hall:"Kentia Hall",cat:"fashion",desc_jp:"アニメ・日本カルチャーインスパイアのアパレル・アクセサリーを展示販売。限定デザインアイテムあり。",co_detail:"",co_layer:"",pts:"P4",trds:"T1",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"M.RAGE | Astral Systems",booth:"SH-3708",hall:"South Hall",cat:"fashion",desc_jp:"アニメ・日本カルチャーインスパイアのアパレル・アクセサリーを展示販売。限定デザインアイテムあり。",co_detail:"",co_layer:"",pts:"P2",trds:"T2",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"M8's Warudo",booth:"KH-524",hall:"Kentia Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"MACROSS",booth:"SH-325",hall:"South Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"P2",trds:"T2,T3",point:"プレイアブルデモ体験ができる。発売前作品を最速で体験できるチャンス。"},
+{name:"Magic and Monsters",booth:"KH-1606",hall:"Kentia Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Magical Girl Bella",booth:"WH-964, WH-966",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Maneki Neko",booth:"WH-1770",hall:"West Hall",cat:"art",desc_jp:"アニメ・マンガのオリジナルアート・プリント・イラストを展示販売。アーティストとの交流機会も。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Manga de Japanese",booth:"KH-2314",hall:"Kentia Hall",cat:"manga",desc_jp:"マンガ・ライトノベル・グラフィックノベルの販売。最新ライセンス作品・限定版・サイン本の入手機会。",co_detail:"",co_layer:"",pts:"",trds:"T1",point:"英語版マンガ・LNの最新ライセンス情報をいち早くキャッチ。サイン会・限定版の入手機会も。"},
+{name:"MangaGamer.com",booth:"KH-2538",hall:"Kentia Hall",cat:"game",desc_jp:"ゲームの最新作プレイアブルデモ・情報発表・限定グッズ販売。インタラクティブな体験コーナーあり。",co_detail:"",co_layer:"",pts:"P2",trds:"T1,T2,T3",point:"ゲームの最新情報・デモを一番早く体験できる。新作発表のサプライズに期待。"},
+{name:"MangaPlaza",booth:"SH-3700",hall:"South Hall",cat:"game",desc_jp:"ゲームの最新作プレイアブルデモ・情報発表・限定グッズ販売。インタラクティブな体験コーナーあり。",co_detail:"",co_layer:"",pts:"P2",trds:"T1,T3",point:"ゲームの最新情報・デモを一番早く体験できる。新作発表のサプライズに期待。"},
+{name:"MAPPA",booth:"SH-720",hall:"South Hall",cat:"tech",desc_jp:"アニメ×テクノロジーの革新的製品・サービスを展示。インタラクティブデモ体験あり。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Materia Store",booth:"KH-114",hall:"Kentia Hall",cat:"game",desc_jp:"ゲームの最新作プレイアブルデモ・情報発表・限定グッズ販売。インタラクティブな体験コーナーあり。",co_detail:"",co_layer:"",pts:"P2",trds:"T3,T5",point:"ゲームの最新情報・デモを一番早く体験できる。新作発表のサプライズに期待。"},
+{name:"Media Blasters",booth:"KH-2746",hall:"Kentia Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"MEGA64, Inc.",booth:"KH-1042",hall:"Kentia Hall",cat:"fashion",desc_jp:"アニメ・日本カルチャーインスパイアのアパレル・アクセサリーを展示販売。限定デザインアイテムあり。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Mega Games",booth:"WH-3062",hall:"West Hall",cat:"game",desc_jp:"ゲームの最新作プレイアブルデモ・情報発表・限定グッズ販売。インタラクティブな体験コーナーあり。",co_detail:"",co_layer:"",pts:"P2",trds:"T3",point:"ゲームの最新情報・デモを一番早く体験できる。新作発表のサプライズに期待。"},
+{name:"Mercari Japan",booth:"SH-110",hall:"South Hall",cat:"tech",desc_jp:"アニメ×テクノロジーの革新的製品・サービスを展示。インタラクティブデモ体験あり。",co_detail:"日本最大のフリマアプリ「メルカリ」。スルガヤとのコラボで正規アニメグッズのマーケットプレイスとして北米展開。",co_layer:"EC・プラットフォーム",pts:"P3",trds:"T2",point:"AX限定グッズあり。他では入手不可の限定品を早めにチェック。数量限定のため午前中の訪問を推奨。"},
+{name:"MicOtaku",booth:"WH-3558,WH-3658,WH-3758",hall:"West Hall",cat:"fashion",desc_jp:"アニメ・日本カルチャーインスパイアのアパレル・アクセサリーを展示販売。限定デザインアイテムあり。",co_detail:"",co_layer:"",pts:"P1,P4",trds:"T1,T3,T5",point:"プレイアブルデモ体験ができる。発売前作品を最速で体験できるチャンス。"},
+{name:"Midnight BL/Toonique",booth:"WH-1916, WH-2018",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Mika Pikazo",booth:"WH-1364",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Milk Mocha Bear",booth:"KH-1000",hall:"Kentia Hall",cat:"manga",desc_jp:"マンガ・ライトノベル・グラフィックノベルの販売。最新ライセンス作品・限定版・サイン本の入手機会。",co_detail:"",co_layer:"",pts:"P4",trds:"",point:"英語版マンガ・LNの最新ライセンス情報をいち早くキャッチ。サイン会・限定版の入手機会も。"},
+{name:"Milky Tomato",booth:"WH-372",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"MILQ",booth:"KH-418",hall:"Kentia Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"MIRESI",booth:"WH-1650",hall:"West Hall",cat:"game",desc_jp:"ゲームの最新作プレイアブルデモ・情報発表・限定グッズ販売。インタラクティブな体験コーナーあり。",co_detail:"韓国大手ゲームデベロッパー。CROSSFIRE・Epics Seven等で知られる。新作「MIRESI」でアニメ×ゲーム融合を推進。",co_layer:"ゲーム",pts:"P3",trds:"T2,T3",point:"プレイアブルデモ体験ができる。発売前作品を最速で体験できるチャンス。"},
+{name:"Misty Mountain Gaming",booth:"WH-2356",hall:"West Hall",cat:"game",desc_jp:"ゲームの最新作プレイアブルデモ・情報発表・限定グッズ販売。インタラクティブな体験コーナーあり。",co_detail:"",co_layer:"",pts:"",trds:"T3",point:"ゲームの最新情報・デモを一番早く体験できる。新作発表のサプライズに期待。"},
+{name:"Modified Nonstop",booth:"KH-136, KH-236",hall:"Kentia Hall",cat:"fashion",desc_jp:"アニメ・日本カルチャーインスパイアのアパレル・アクセサリーを展示販売。限定デザインアイテムあり。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"MosoBox",booth:"WH-200",hall:"West Hall",cat:"art",desc_jp:"アニメ・マンガのオリジナルアート・プリント・イラストを展示販売。アーティストとの交流機会も。",co_detail:"",co_layer:"",pts:"",trds:"T2,T5",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"NekomimiPUNKS",booth:"KH-1942, KH-1944",hall:"Kentia Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"T1",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Nekopunch",booth:"WH-1772",hall:"West Hall",cat:"art",desc_jp:"アニメ・マンガのオリジナルアート・プリント・イラストを展示販売。アーティストとの交流機会も。",co_detail:"",co_layer:"",pts:"P2,P3",trds:"T2",point:"AX限定グッズあり。他では入手不可の限定品を早めにチェック。数量限定のため午前中の訪問を推奨。"},
+{name:"NEKOTWO",booth:"WH-3742,WH-3744",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Neo Sabers",booth:"WH-1670",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"NEXON Korea Corporation",booth:"SH-2220",hall:"South Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"NITOS",booth:"KH-1020",hall:"Kentia Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Noms Cafe",booth:"KH-1612",hall:"Kentia Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"nyx skies llc",booth:"WH-1276",hall:"West Hall",cat:"manga",desc_jp:"マンガ・ライトノベル・グラフィックノベルの販売。最新ライセンス作品・限定版・サイン本の入手機会。",co_detail:"",co_layer:"",pts:"",trds:"",point:"英語版マンガ・LNの最新ライセンス情報をいち早くキャッチ。サイン会・限定版の入手機会も。"},
+{name:"OceanVeil",booth:"WH-3012",hall:"West Hall",cat:"tech",desc_jp:"アニメ×テクノロジーの革新的製品・サービスを展示。インタラクティブデモ体験あり。",co_detail:"",co_layer:"",pts:"P1,P2",trds:"T1,T4",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"OFF SCRIPT",booth:"WH-1912, WH-2012",hall:"West Hall",cat:"fashion",desc_jp:"アニメ・日本カルチャーインスパイアのアパレル・アクセサリーを展示販売。限定デザインアイテムあり。",co_detail:"",co_layer:"",pts:"",trds:"T1",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"OG Collectibles",booth:"KH-2512, KH-2514",hall:"Kentia Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Ohmonah",booth:"SH-504",hall:"South Hall",cat:"fashion",desc_jp:"アニメ・日本カルチャーインスパイアのアパレル・アクセサリーを展示販売。限定デザインアイテムあり。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"OLO Marker",booth:"KH-1044, KH-1144",hall:"Kentia Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"OMOCAT",booth:"SH-1514",hall:"South Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Oshi",booth:"WH-1628, WH-1630",hall:"West Hall",cat:"tech",desc_jp:"アニメ×テクノロジーの革新的製品・サービスを展示。インタラクティブデモ体験あり。",co_detail:"",co_layer:"",pts:"P2,P3",trds:"T4,T5",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Otaku Collectives",booth:"KH-2900",hall:"Kentia Hall",cat:"game",desc_jp:"ゲームの最新作プレイアブルデモ・情報発表・限定グッズ販売。インタラクティブな体験コーナーあり。",co_detail:"",co_layer:"",pts:"P2,P3",trds:"T2,T3,T5",point:"AX限定グッズあり。他では入手不可の限定品を早めにチェック。数量限定のため午前中の訪問を推奨。"},
+{name:"OzzOn Japan",booth:"WH-776",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Pawsonify",booth:"KH-2618,KH-2620",hall:"Kentia Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"T1",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"PixelThat",booth:"KH-3218, KH-3220",hall:"Kentia Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"PokeyPokums",booth:"WH-1278",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"PONY CANYON INC.",booth:"SH-1520",hall:"South Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"POPNATION INC.",booth:"WH-470, WH-472",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Potato Productions",booth:"KH-1024, KH-1026",hall:"Kentia Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Press Start Games New England",booth:"WH-2662",hall:"West Hall",cat:"game",desc_jp:"ゲームの最新作プレイアブルデモ・情報発表・限定グッズ販売。インタラクティブな体験コーナーあり。",co_detail:"",co_layer:"",pts:"P1,P2",trds:"T1,T3",point:"ゲームの最新情報・デモを一番早く体験できる。新作発表のサプライズに期待。"},
+{name:"Project CCG x Pvramid",booth:"KH-130",hall:"Kentia Hall",cat:"game",desc_jp:"ゲームの最新作プレイアブルデモ・情報発表・限定グッズ販売。インタラクティブな体験コーナーあり。",co_detail:"",co_layer:"",pts:"",trds:"T3",point:"ゲームの最新情報・デモを一番早く体験できる。新作発表のサプライズに期待。"},
+{name:"Project SAIXSEI",booth:"WH-2350",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Puremind Inc.",booth:"SH-3524",hall:"South Hall",cat:"figure",desc_jp:"公式ウォールスクロール・ぬいぐるみ・限定Tシャツ・コレクタブルハットを販売。",co_detail:"",co_layer:"",pts:"P1,P2",trds:"T1,T2",point:"高品質フィギュアを実物で確認・購入できる。AX限定カラー・先行販売品の存在も例年あり。"},
+{name:"Pvramid Gaming",booth:"KH-420",hall:"Kentia Hall",cat:"game",desc_jp:"ゲームの最新作プレイアブルデモ・情報発表・限定グッズ販売。インタラクティブな体験コーナーあり。",co_detail:"",co_layer:"",pts:"",trds:"T3",point:"ゲームの最新情報・デモを一番早く体験できる。新作発表のサプライズに期待。"},
+{name:"Retro Hex Collex",booth:"KH-1306",hall:"Kentia Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Retro Guerrilla",booth:"WH-3662",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Retro Respawn",booth:"WH-2362",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Retro Saikou",booth:"WH-3024",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Rimi Star Production",booth:"WH-176,WH-178",hall:"West Hall",cat:"figure",desc_jp:"アニメ・マンガ・ゲームキャラクターの高品質フィギュア・コレクタブルを展示販売。限定品・先行販売あり。",co_detail:"",co_layer:"",pts:"",trds:"T1,T5",point:"高品質フィギュアを実物で確認・購入できる。AX限定カラー・先行販売品の存在も例年あり。"},
+{name:"RISO Studio Arts",booth:"WH-156",hall:"West Hall",cat:"art",desc_jp:"アニメ・マンガのオリジナルアート・プリント・イラストを展示販売。アーティストとの交流機会も。",co_detail:"",co_layer:"",pts:"P4",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Rocket Panda Games",booth:"WH-664",hall:"West Hall",cat:"game",desc_jp:"ゲームの最新作プレイアブルデモ・情報発表・限定グッズ販売。インタラクティブな体験コーナーあり。",co_detail:"",co_layer:"",pts:"P2,P4",trds:"T3",point:"ゲームの最新情報・デモを一番早く体験できる。新作発表のサプライズに期待。"},
+{name:"Rose Gold Jelly x Minto",booth:"WH-3016",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Rossdraws",booth:"KH-442",hall:"Kentia Hall",cat:"manga",desc_jp:"アニメセル画・鉛筆スケッチ・オリジナルプロダクションアートの高品質コレクション。",co_detail:"",co_layer:"",pts:"",trds:"",point:"英語版マンガ・LNの最新ライセンス情報をいち早くキャッチ。サイン会・限定版の入手機会も。"},
+{name:"Rowdy Ranch",booth:"KH-2724",hall:"Kentia Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Ruyikoi",booth:"WH-1664",hall:"West Hall",cat:"fashion",desc_jp:"アニメ・日本カルチャーインスパイアのアパレル・アクセサリーを展示販売。限定デザインアイテムあり。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Sakimichan Art",booth:"KH-2528",hall:"Kentia Hall",cat:"art",desc_jp:"アニメ・マンガのオリジナルアート・プリント・イラストを展示販売。アーティストとの交流機会も。",co_detail:"全日本空輸（ANA）。日本への航空券・旅行体験のPRブース。アニメファンの日本旅行需要を直接取り込む。",co_layer:"旅行・航空",pts:"P4",trds:"T2,T5",point:"ミートアンドグリートイベント開催予定。限定グッズ獲得チャンスも。早めの列形成を推奨。"},
+{name:"Sanshee LLC",booth:"KH-700",hall:"Kentia Hall",cat:"game",desc_jp:"ゲームの最新作プレイアブルデモ・情報発表・限定グッズ販売。インタラクティブな体験コーナーあり。",co_detail:"",co_layer:"",pts:"P1,P2",trds:"T1,T2,T3",point:"ゲームの最新情報・デモを一番早く体験できる。新作発表のサプライズに期待。"},
+{name:"Secretlab",booth:"KH-436",hall:"Kentia Hall",cat:"fashion",desc_jp:"アニメ・日本カルチャーインスパイアのアパレル・アクセサリーを展示販売。限定デザインアイテムあり。",co_detail:"世界で最も評価の高いゲーミングチェア・デスクブランド。One Piece・ポケモン等とのコラボモデルで知られる。",co_layer:"テクノロジー・家具",pts:"P3",trds:"T2,T5",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Secrets of Stones",booth:"KH-126",hall:"Kentia Hall",cat:"fashion",desc_jp:"アニメ・日本カルチャーインスパイアのアパレル・アクセサリーを展示販売。限定デザインアイテムあり。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"SEGA",booth:"SH-1000",hall:"South Hall",cat:"game",desc_jp:"ゲームの最新作プレイアブルデモ・情報発表・限定グッズ販売。インタラクティブな体験コーナーあり。",co_detail:"世界的なゲーム・アミューズメント企業セガ。子会社Sega Faveを通じてアニメ・ゲームキャラクターグッズを幅広く展開。",co_layer:"ゲーム・IP商品化",pts:"P2",trds:"T2,T3",point:"ゲームの最新情報・デモを一番早く体験できる。新作発表のサプライズに期待。"},
+{name:"Senpai Squad",booth:"KH-2400",hall:"Kentia Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Serenity Forge",booth:"WH-3638,WH-3738",hall:"West Hall",cat:"game",desc_jp:"ゲームの最新作プレイアブルデモ・情報発表・限定グッズ販売。インタラクティブな体験コーナーあり。",co_detail:"",co_layer:"",pts:"P2,P4",trds:"T3",point:"ゲームの最新情報・デモを一番早く体験できる。新作発表のサプライズに期待。"},
+{name:"Sharodactyl Art",booth:"WH-1372",hall:"West Hall",cat:"art",desc_jp:"アニメ・マンガのオリジナルアート・プリント・イラストを展示販売。アーティストとの交流機会も。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Shinya",booth:"KH-2918",hall:"Kentia Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Shout! Studios",booth:"KH-1312",hall:"Kentia Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"P4",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"SHWA",booth:"KH-2406",hall:"Kentia Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Siamurai Apparel & Mukashinoboro Mingei Studio",booth:"WH-2070",hall:"West Hall",cat:"manga",desc_jp:"マンガ・ライトノベル・グラフィックノベルの販売。最新ライセンス作品・限定版・サイン本の入手機会。",co_detail:"",co_layer:"",pts:"P4",trds:"",point:"英語版マンガ・LNの最新ライセンス情報をいち早くキャッチ。サイン会・限定版の入手機会も。"},
+{name:"Single Sploot",booth:"WH-1066",hall:"West Hall",cat:"art",desc_jp:"アニメ・マンガのオリジナルアート・プリント・イラストを展示販売。アーティストとの交流機会も。",co_detail:"",co_layer:"",pts:"P4",trds:"T1,T2,T5",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"SixOn Clothing",booth:"KH-1124, KH-1126",hall:"Kentia Hall",cat:"game",desc_jp:"ゲームの最新作プレイアブルデモ・情報発表・限定グッズ販売。インタラクティブな体験コーナーあり。",co_detail:"",co_layer:"",pts:"P2",trds:"T2,T3,T5",point:"ゲームの最新情報・デモを一番早く体験できる。新作発表のサプライズに期待。"},
+{name:"Smelly Panda x Treefrog USA",booth:"KH-1324, KH-1326",hall:"Kentia Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Square Enix",booth:"SH-1004",hall:"South Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"SR-GYM",booth:"WH-672",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"P3",trds:"T2",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Starry Cube Corporation",booth:"SH-2135",hall:"South Hall",cat:"game",desc_jp:"ゲームの最新作プレイアブルデモ・情報発表・限定グッズ販売。インタラクティブな体験コーナーあり。",co_detail:"",co_layer:"",pts:"P1,P2",trds:"T3",point:"ゲームの最新情報・デモを一番早く体験できる。新作発表のサプライズに期待。"},
+{name:"STL Ocarina",booth:"KH-1012,KH-1014",hall:"Kentia Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Sugar Mint Cafe",booth:"KH-818, KH-820",hall:"Kentia Hall",cat:"figure",desc_jp:"アニメ・マンガ・ゲームキャラクターの高品質フィギュア・コレクタブルを展示販売。限定品・先行販売あり。",co_detail:"",co_layer:"",pts:"",trds:"",point:"高品質フィギュアを実物で確認・購入できる。AX限定カラー・先行販売品の存在も例年あり。"},
+{name:"Sushito Clothing",booth:"WH-1264",hall:"West Hall",cat:"fashion",desc_jp:"アニメ・日本カルチャーインスパイアのアパレル・アクセサリーを展示販売。限定デザインアイテムあり。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"TAITO CORPORATION",booth:"SH-2126",hall:"South Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Tanpopo House",booth:"KH-430",hall:"Kentia Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"TeeTurtle & Unstable Games",booth:"KH-1344",hall:"Kentia Hall",cat:"game",desc_jp:"ゲームの最新作プレイアブルデモ・情報発表・限定グッズ販売。インタラクティブな体験コーナーあり。",co_detail:"",co_layer:"",pts:"P2,P3",trds:"T2,T3",point:"ゲームの最新情報・デモを一番早く体験できる。新作発表のサプライズに期待。"},
+{name:"TENGA",booth:"KH-2128",hall:"Kentia Hall",cat:"art",desc_jp:"アニメ・マンガのオリジナルアート・プリント・イラストを展示販売。アーティストとの交流機会も。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Timeless Anime",booth:"WH-254",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"The Japan Tour Company",booth:"WH-1272",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"The Yaoi Army",booth:"KH-3046",hall:"Kentia Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"P4",trds:"T1",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"The Shumi Company",booth:"SH-925",hall:"South Hall",cat:"game",desc_jp:"ゲームの最新作プレイアブルデモ・情報発表・限定グッズ販売。インタラクティブな体験コーナーあり。",co_detail:"",co_layer:"",pts:"P3",trds:"T2,T3",point:"プレイアブルデモ体験ができる。発売前作品を最速で体験できるチャンス。"},
+{name:"Thermaltake",booth:"WH-1776",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Thousand Skies",booth:"KH-718",hall:"Kentia Hall",cat:"figure",desc_jp:"アニメ・マンガ・ゲームキャラクターの高品質フィギュア・コレクタブルを展示販売。限定品・先行販売あり。",co_detail:"",co_layer:"",pts:"",trds:"",point:"高品質フィギュアを実物で確認・購入できる。AX限定カラー・先行販売品の存在も例年あり。"},
+{name:"TMS Entertainment",booth:"WH-2324",hall:"West Hall",cat:"game",desc_jp:"ゲームの最新作プレイアブルデモ・情報発表・限定グッズ販売。インタラクティブな体験コーナーあり。",co_detail:"",co_layer:"",pts:"P2",trds:"T3",point:"ゲームの最新情報・デモを一番早く体験できる。新作発表のサプライズに期待。"},
+{name:"Toho Global Inc.",booth:"SH-3106",hall:"South Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Tokyo Basement",booth:"WH-3750",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"TOKYOPOP / ELECEED",booth:"KH-1900",hall:"Kentia Hall",cat:"manga",desc_jp:"マンガ・ライトノベル・グラフィックノベルの販売。最新ライセンス作品・限定版・サイン本の入手機会。",co_detail:"",co_layer:"",pts:"P2,P4",trds:"T1",point:"英語版マンガ・LNの最新ライセンス情報をいち早くキャッチ。サイン会・限定版の入手機会も。"},
+{name:"Toshikigirl",booth:"KH-142",hall:"Kentia Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Toy Mandala",booth:"SH-3738",hall:"South Hall",cat:"game",desc_jp:"ゲームの最新作プレイアブルデモ・情報発表・限定グッズ販売。インタラクティブな体験コーナーあり。",co_detail:"",co_layer:"",pts:"P1,P2",trds:"T1,T2,T3",point:"ゲームの最新情報・デモを一番早く体験できる。新作発表のサプライズに期待。"},
+{name:"ToyArena.com",booth:"WH-3036",hall:"West Hall",cat:"figure",desc_jp:"アニメ・マンガ・ゲームキャラクターの高品質フィギュア・コレクタブルを展示販売。限定品・先行販売あり。",co_detail:"",co_layer:"",pts:"",trds:"T2,T5",point:"高品質フィギュアを実物で確認・購入できる。AX限定カラー・先行販売品の存在も例年あり。"},
+{name:"Toys vs Games",booth:"WH-2462",hall:"West Hall",cat:"game",desc_jp:"ゲームの最新作プレイアブルデモ・情報発表・限定グッズ販売。インタラクティブな体験コーナーあり。",co_detail:"",co_layer:"",pts:"P2",trds:"T3",point:"ゲームの最新情報・デモを一番早く体験できる。新作発表のサプライズに期待。"},
+{name:"Tsunami Industries",booth:"SH-120",hall:"South Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Tworgis",booth:"WH-1924",hall:"West Hall",cat:"fashion",desc_jp:"アニメ・日本カルチャーインスパイアのアパレル・アクセサリーを展示販売。限定デザインアイテムあり。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"TypeZERO",booth:"SH-3500",hall:"South Hall",cat:"art",desc_jp:"アニメ・マンガのオリジナルアート・プリント・イラストを展示販売。アーティストとの交流機会も。",co_detail:"",co_layer:"",pts:"",trds:"T1",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Uchida of America, Corp.",booth:"KH-144, KH-244",hall:"Kentia Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Ukiyo-e Heroes",booth:"KH-1338, KH-1438",hall:"Kentia Hall",cat:"manga",desc_jp:"マンガ・ライトノベル・グラフィックノベルの販売。最新ライセンス作品・限定版・サイン本の入手機会。",co_detail:"",co_layer:"",pts:"",trds:"",point:"英語版マンガ・LNの最新ライセンス情報をいち早くキャッチ。サイン会・限定版の入手機会も。"},
+{name:"Ultra PRO",booth:"WH-3512",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"V1 Tech",booth:"KH-1006",hall:"Kentia Hall",cat:"art",desc_jp:"アニメ・マンガのオリジナルアート・プリント・イラストを展示販売。アーティストとの交流機会も。",co_detail:"",co_layer:"",pts:"",trds:"T5",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Viciouskill",booth:"KH-1924, KH-1926",hall:"Kentia Hall",cat:"art",desc_jp:"アニメ・マンガのオリジナルアート・プリント・イラストを展示販売。アーティストとの交流機会も。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"VIZ",booth:"SH-1914",hall:"South Hall",cat:"manga",desc_jp:"マンガ・ライトノベル・グラフィックノベルの販売。最新ライセンス作品・限定版・サイン本の入手機会。",co_detail:"米国最大の日本マンガ・アニメライセンス企業。小学館・集英社・白泉社の合弁。BLEACH・NARUTO等を英語展開。",co_layer:"現地ライセンス・配信",pts:"P3",trds:"T1,T2",point:"AX限定グッズあり。他では入手不可の限定品を早めにチェック。数量限定のため午前中の訪問を推奨。"},
+{name:"Void Complex",booth:"KH-3328",hall:"Kentia Hall",cat:"fashion",desc_jp:"アニメ・日本カルチャーインスパイアのアパレル・アクセサリーを展示販売。限定デザインアイテムあり。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"VOLKS USA, INC.",booth:"SH-525",hall:"South Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Weapons Grade Waifus",booth:"KH-2920",hall:"Kentia Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"West Coast TCGiftshop",booth:"WH-2072",hall:"West Hall",cat:"game",desc_jp:"ゲームの最新作プレイアブルデモ・情報発表・限定グッズ販売。インタラクティブな体験コーナーあり。",co_detail:"",co_layer:"",pts:"P4",trds:"T1,T3",point:"ゲームの最新情報・デモを一番早く体験できる。新作発表のサプライズに期待。"},
+{name:"What's Clackin",booth:"KH-2518, KH-2520",hall:"Kentia Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Wick Weebs",booth:"WH-464",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Wuthering Waves",booth:"SH-3720",hall:"South Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"XAVIERCAL CUSTOMS AND COLLECTIBLES",booth:"WH-1612, WH-1614",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"XPPEN Technology CO.",booth:"KH-512, KH-412",hall:"Kentia Hall",cat:"art",desc_jp:"アニメ・マンガのオリジナルアート・プリント・イラストを展示販売。アーティストとの交流機会も。",co_detail:"",co_layer:"",pts:"",trds:"T5",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Yes Anime, Inc",booth:"SH-729",hall:"South Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"},
+{name:"Yiggybean Books + Gifts",booth:"KH-2546",hall:"Kentia Hall",cat:"manga",desc_jp:"マンガ・ライトノベル・グラフィックノベルの販売。最新ライセンス作品・限定版・サイン本の入手機会。",co_detail:"",co_layer:"",pts:"P1,P4",trds:"T1,T2",point:"英語版マンガ・LNの最新ライセンス情報をいち早くキャッチ。サイン会・限定版の入手機会も。"},
+{name:"YOSTAR (HONG KONG) LIMITED",booth:"SH-2714",hall:"South Hall",cat:"game",desc_jp:"ゲームの最新作プレイアブルデモ・情報発表・限定グッズ販売。インタラクティブな体験コーナーあり。",co_detail:"アークナイツ・アズールレーン・雀魂を展開する中国発ゲーム企業。日本スタジオ運営・グローバル展開の先進例。",co_layer:"ゲーム・IP運営",pts:"P1,P2",trds:"T1,T3",point:"ゲームの最新情報・デモを一番早く体験できる。新作発表のサプライズに期待。"},
+{name:"Zuvi Colorbox",booth:"WH-1624, WH-1626",hall:"West Hall",cat:"merch",desc_jp:"アニメ・マンガ・ゲーム関連のグッズ・コレクタブルを幅広く販売。日本直輸入品や限定品も取り扱う。",co_detail:"",co_layer:"",pts:"",trds:"",point:"アニメ・マンガ・ゲーム関連グッズの掘り出し物が見つかる可能性あり。会場内でも特に個性的なラインナップ。"}];
+
+var hF="all",cF="all",pF="all",tF="all",q="";
+
+function render(){
+  var sq=q.toLowerCase();
+  var f=R.filter(function(r){
+    if(hF!=="all"&&r.hall!==hF)return false;
+    if(cF!=="all"&&r.cat!==cF)return false;
+    if(pF!=="all"&&r.pts.indexOf(pF)<0)return false;
+    if(tF!=="all"&&r.trds.indexOf(tF)<0)return false;
+    if(sq&&([r.name,r.booth,r.desc_jp,r.co_detail,r.co_layer].join(" ").toLowerCase().indexOf(sq)<0))return false;
+    return true;
+  });
+  document.getElementById("cnt").textContent=f.length+"社表示（全"+R.length+"社）";
+  var rows="";
+  for(var i=0;i<f.length;i++){
+    var r=f[i];
+    var pts=(r.pts||"").split(",").filter(function(x){return x;}).map(function(p){
+      return '<span class="pt" style="background:'+(PC[p]||"#eee")+';color:'+(PT[p]||"#333")+'">'+(PL[p]||p)+'</span>';
+    }).join("");
+    var trds=(r.trds||"").split(",").filter(function(x){return x;}).map(function(t){
+      return '<span class="pt" style="background:'+(TC[t]||"#eee")+';color:'+(TT[t]||"#333")+'">'+(TL[t]||t)+'</span>';
+    }).join("");
+    var coHTML=(r.co_detail||r.co_layer)
+      ?((r.co_layer?'<span class="co-layer">'+r.co_layer+'</span><br>':"")
+        +(r.co_detail?'<div style="font-size:10px;color:#444;margin-top:2px;line-height:1.4">'+r.co_detail+'</div>':""))
+      :'<span style="color:#bbb;font-size:10px">—</span>';
+    rows+='<tr>'
+      +'<td><div class="name-text">'+r.name+'</div>'
+      +'<span class="cat '+(CC[r.cat]||"c-merch")+'">'+(CL[r.cat]||r.cat)+'</span></td>'
+      +'<td style="font-size:10px;color:#555;white-space:nowrap">'+r.booth+'</td>'
+      +'<td><span class="hall '+(HC[r.hall]||"sh")+'">'+(HL[r.hall]||r.hall)+'</span></td>'
+      +'<td><span class="cat '+(CC[r.cat]||"c-merch")+'">'+(CL[r.cat]||r.cat)+'</span></td>'
+      +'<td>'+coHTML+'</td>'
+      +'<td style="font-size:11px">'+r.desc_jp+'</td>'
+      +'<td style="font-size:10px;color:#444">&#11088; '+r.point+'</td>'
+      +'<td>'+pts+(trds?'<br>':'')+trds+'</td>'
+      +'</tr>';
+  }
+  document.getElementById("tb").innerHTML=rows;
+}
+
+function setupFilter(id,setter){
+  document.getElementById(id).addEventListener("click",function(e){
+    var b=e.target.closest("[data-v]");
+    if(!b)return;
+    setter(b.getAttribute("data-v"));
+    var btns=document.getElementById(id).querySelectorAll("[data-v]");
+    for(var i=0;i<btns.length;i++) btns[i].classList.remove("active");
+    b.classList.add("active");
+    render();
+  });
+}
+
+setupFilter("hallF",function(v){hF=v;});
+setupFilter("catF", function(v){cF=v;});
+setupFilter("ptF",  function(v){pF=v;});
+setupFilter("trdF", function(v){tF=v;});
+document.getElementById("q").addEventListener("input",function(e){q=e.target.value;render();});
+render();
+</script>
+</body>
+</html>
